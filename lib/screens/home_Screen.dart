@@ -36,7 +36,7 @@ class HomeScreen extends StatelessWidget {
             _quickCard(
               context: context,
               icon: Icons.inventory_2_outlined,
-              title: "View Full Inventory",
+              title: "View All products",
               subtitle: "Manage and view all your products",
               onTap: () {
                 Navigator.push(
@@ -53,8 +53,8 @@ class HomeScreen extends StatelessWidget {
             _quickCard(
               context: context,
               icon: Icons.add_circle_outline,
-              title: "Register New Product",
-              subtitle: "Add new items to the catalog",
+              title: "Add New Product",
+              subtitle: "Add new items to the list",
               onTap: () {
                 Navigator.push(
                   context,
@@ -137,60 +137,3 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import 'package:flutter/material.dart';
-// import '../widgets/app_drawer.dart';
-
-// class HomeScreen extends StatelessWidget {
-//   const HomeScreen({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       drawer: const AppDrawer(),
-//      appBar: AppBar(
-//   title: const Text(
-//     'Home',
-//     style: TextStyle(color: Colors.white),
-//   ),
-//   backgroundColor: Colors.green,
-//   centerTitle: true,
-//   iconTheme: const IconThemeData(color: Colors.white),
-// ),
-
-//       body: const Center(
-//         child: Text(
-//           'Welcome to E-Commerce App',
-//           style: TextStyle(fontSize: 18),
-//         ),
-//       ),
-//     );
-//   }
-// }

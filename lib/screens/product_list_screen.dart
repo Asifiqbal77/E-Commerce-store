@@ -10,17 +10,16 @@ class ProductListScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final FirestoreService service = FirestoreService();
 
-    return Scaffold(appBar: AppBar(
-  title: const Text(
-    'Products List',
-    style: TextStyle(color: Colors.white),
-  ),
-  centerTitle: true,
-  backgroundColor: Colors.blue,
-  iconTheme: const IconThemeData(color: Colors.white),
-),
-
-      
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          'Products List',
+          style: TextStyle(color: Colors.white),
+        ),
+        centerTitle: true,
+        backgroundColor: Colors.blue,
+        iconTheme: const IconThemeData(color: Colors.white),
+      ),
       body: StreamBuilder<List<Product>>(
         stream: service.getProducts(),
         builder: (context, snapshot) {
@@ -42,15 +41,17 @@ class ProductListScreen extends StatelessWidget {
               ),
               itemBuilder: (context, index) {
                 final product = products[index];
-                final int idInt = int.tryParse(product.id) ?? 0; // <-- fix here
-                final bgColor = Colors.primaries[idInt % Colors.primaries.length].withOpacity(0.1);
+                final int idInt = int.tryParse(product.id) ?? 0;
+                final bgColor = Colors.primaries[idInt % Colors.primaries.length]
+                    .withOpacity(0.1);
 
                 return GestureDetector(
                   onTap: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (_) => ProductDetailScreen(product: product),
+                        builder: (_) =>
+                            ProductDetailScreen(product: product),
                       ),
                     );
                   },
@@ -80,7 +81,7 @@ class ProductListScreen extends StatelessWidget {
                       ),
                       const SizedBox(height: 4),
                       Text(
-                        "\$${product.price}",
+                        "Rs: ${product.price}",
                         style: const TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w600,
@@ -98,81 +99,3 @@ class ProductListScreen extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import 'package:flutter/material.dart';
-// import '../services/firestore_service.dart';
-// import '../models/product_model.dart';
-// import 'products_detail_screen.dart';
-
-// class ProductListScreen extends StatelessWidget {
-//   const ProductListScreen({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     final FirestoreService service = FirestoreService();
-
-//     return Scaffold(
-//       appBar: AppBar(title: const Text('Product List')),
-//       body: StreamBuilder<List<Product>>(
-//         stream: service.getProducts(),
-//         builder: (context, snapshot) {
-//           if (!snapshot.hasData) return const Center(child: CircularProgressIndicator());
-
-//           final products = snapshot.data!;
-//           return ListView.builder(
-//             itemCount: products.length,
-//             itemBuilder: (_, i) {
-//               final product = products[i];
-//               return Card(
-//                 child: ListTile(
-//                   title: Text(product.name),
-//                   subtitle: Text('Price: ${product.price}'),
-//                   onTap: () {
-//                     Navigator.push(
-//                       context,
-//                       MaterialPageRoute(
-//                         builder: (_) => ProductDetailScreen(product: product),
-//                       ),
-//                     );
-//                   },
-//                 ),
-//               );
-//             },
-//           );
-//         },
-//       ),
-//     );
-//   }
-// }
